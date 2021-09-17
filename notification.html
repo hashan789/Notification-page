@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:30%;
+            height:400px;
+            background-color: blanchedalmond;
+            color: black;
+            text-align: center;
+            top:25%;
+            margin-left:35%;
+            border:1px solid black;
+            z-index:0;
+        }
+        .hide{
+           visibility: hidden;
+        }
+        .close{
+            display:none;
+        }
+        .body{
+            z-index:0;
+            background-color: black;
+            opacity:0.3;
+        }
+    </style>
+    <script>
+        async function mydisplay(){
+    let myPromise = new Promise((myResolve,reject) => {
+        var text = document.getElementById("demo");
+        setTimeout(() => myResolve(text),2000)
+    });
+    let result = await myPromise;
+    remove(result);
+}
+
+/*function remove(idea){
+    idea.classList.remove("hide");
+}*/
+
+function remove(idea){
+    document.getElementById("demo").classList.remove("hide");
+}
+
+mydisplay();
+
+
+     async function mydisplay1(){
+    let myPromise = new Promise((myResolve,reject) => {
+        var text = document.getElementById("demo1");
+        setTimeout(() => myResolve(text),2000)
+    });
+    let result1 = await myPromise;
+    add(result1);
+}
+
+function add(renew){
+    document.getElementById("demo1").classList.add("hide");
+}
+
+mydisplay1();
+</script>
+<script>
+function close1(){
+    document.getElementById("demo").setAttribute("class","hide");
+}
+
+    </script>
+</head>
+<body>
+    <div id="demo1">
+        <h1>loading....</h1>
+    </div>
+    <div id="demo" class="hide">
+        <div class="box">
+        <h1>articles</h1>
+        <p style="font-family:Georgia, 'Times New Roman', Times, serif;">You are welcome</p>
+        <button value="close" onclick="close1();">close</button>
+        </div>
+    </div>
+</body>
+</html>
